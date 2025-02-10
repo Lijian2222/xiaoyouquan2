@@ -12,12 +12,12 @@ public class Result<T> {
     /**
      * 成功,只能是0
      */
-    private static final int SUCCESS_CODE = 0;
+    private static final int SUCCESS_CODE = 1;
     public static final String SUCCESS_MESSAGE = "操作成功";
     /**
      * 失败
      */
-    public static final int FAIL_CODE = 1;
+    public static final int FAIL_CODE = 0;
     public static final String FAIL_MESSAGE = "操作失败";
 
 

@@ -28,4 +28,6 @@ public class Post {
 
     private Integer isDeleted;
 
+    private Integer retweet;
+
 }

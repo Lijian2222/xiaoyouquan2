@@ -13,9 +13,14 @@ public interface PostGoodMapper {
     //用户点赞
     void insertPostGood(PostGood postGood);
 
+    //用户取消点赞
+    void updatePostGood(PostGood postGood);
+
     //查询帖子被用户点赞过没
     List<PostGood> queryPostGood(PostGood postGood);
 
+    //查询帖子被用户点赞过没，即表中是否有记录
+    List<PostGood> queryPostGoodExist(PostGood postGood);
 
 
 }

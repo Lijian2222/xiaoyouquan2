@@ -21,19 +21,31 @@ public class PostGoodController {
     @Resource
     private PostGoodService postGoodService;
 
-    //用户点赞贴子
+    /**用户点赞贴子
+     * @param postGood
+     */
     @PostMapping("/insert")
-    public void insertPosts(@RequestBody PostGood postGood){
+    public Result insertPosts(@RequestBody PostGood postGood){
         postGoodService.insertPostGood(postGood);
+        return Result.success("点赞成功");
+    }
+
+    /**用户取消点赞贴子
+     * @param postGood
+     */
+    @PostMapping("/delete")
+    public Result deletePosts(@RequestBody PostGood postGood){
+        postGoodService.updatePostGood(postGood);
+        return Result.success("取消点赞成功");
     }
 
     //查询用户点赞信息
     @PostMapping("/query")
     public Result queryPostGood(@RequestBody PostGood postGood){
         if(postGoodService.queryPostGood(postGood)){
-            return Result.success(1);
+            return Result.success("已点赞",1);
         }else {
-            return Result.fail();
+            return Result.fail("未点赞");
         }
     }
 }

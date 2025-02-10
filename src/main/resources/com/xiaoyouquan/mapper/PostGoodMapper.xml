@@ -6,22 +6,31 @@
 
 
     <insert id="insertPostGood" parameterType="com.xiaoyouquan.pojo.PostGood">
-        INSERT INTO post_good (post_id,user_id)
-        VALUES (#{postId}, #{userId})
+        INSERT INTO post_good (post_id,user_id,is_deleted)
+        VALUES (#{postId}, #{userId},#{isDeleted})
     </insert>
 
+    <update id="updatePostGood" parameterType="com.xiaoyouquan.pojo.PostGood">
+        UPDATE post_good SET is_deleted = #{isDeleted}
+        WHERE post_id = #{postId} AND user_id = #{userId}
+    </update>
 
-    <!--条件查询帖子信息-->
+    <!--查询帖子处于点赞状态还是非点赞状态-->
     <!--id:方法名  resultType:单条记录所封装的类型-->
     <select id="queryPostGood" resultType="com.xiaoyouquan.pojo.PostGood">
         select * from post_good p
-        <where>
-            <if test=" postId!=null ">post_id = #{postId}</if>
-            <if test=" userId!=null ">and user_id = #{userId}</if>
-        </where>
-        order by p.post_id desc
+        WHERE post_id = #{postId}
+            and user_id = #{userId}
+            and is_deleted = #{isDeleted}
     </select>
 
+
+    <!--查询帖子有没有被该用户点赞过，即表中有没有记录，无论isDeleted-->
+    <!--id:方法名  resultType:单条记录所封装的类型-->
+    <select id="queryPostGoodExist" resultType="com.xiaoyouquan.pojo.PostGood">
+        select * from post_good p
+        WHERE post_id = #{postId} and user_id = #{userId}
+    </select>
 
 
 </mapper>

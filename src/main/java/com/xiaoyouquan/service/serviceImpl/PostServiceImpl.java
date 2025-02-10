@@ -21,9 +21,7 @@ public class PostServiceImpl implements PostService {
         List<PostDTO> posts = postMapper.listPosts(post);
         return posts;
     }
-
-
-
+    
 
 
 

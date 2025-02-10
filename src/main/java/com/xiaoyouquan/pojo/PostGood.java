@@ -9,7 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PostGood {
 
+
+    private Long id;
+
     private Long postId;
 
     private Long userId;
+
+    private Integer isDeleted;
 }

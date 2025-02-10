@@ -1,9 +1,13 @@
 package com.xiaoyouquan;
 
+import com.xiaoyouquan.mapper.JobMapper;
 import com.xiaoyouquan.mapper.PostGoodMapper;
 import com.xiaoyouquan.mapper.PostMapper;
+import com.xiaoyouquan.mapper.UserMapper;
+import com.xiaoyouquan.pojo.Job;
 import com.xiaoyouquan.pojo.Post;
 import com.xiaoyouquan.pojo.PostGood;
+import com.xiaoyouquan.pojo.User;
 import com.xiaoyouquan.pojo.dto.PostDTO;
 import org.apache.ibatis.annotations.Param;
 import org.junit.jupiter.api.Test;
@@ -28,16 +32,6 @@ class Xiaoyouquan2ApplicationTests {
 
     }
 
-
-    @Test
-    void listPosts() {
-        PostDTO post = new PostDTO();
-        post.setIsDeleted(0);
-        List<PostDTO> posts = postMapper.listPosts(post);
-        for (PostDTO p:posts){
-            System.out.println(p.toString());
-        }
-    }
 
 
 
@@ -79,6 +73,61 @@ class Xiaoyouquan2ApplicationTests {
     }
 
 
+    @Test
+    void querPost(){
+        PostDTO postDTO = new PostDTO();
+        postDTO.setIsDeleted(0);
+        postDTO.setCampus("哈尔滨工业大学");
+        List<PostDTO> postDTOS = postMapper.listPosts(postDTO);
+        for (PostDTO p:postDTOS) {
+            System.out.println(p);
+        }
+    }
 
+    @Test
+    void deletePostGood(){
+        PostGood postGood = new PostGood();
+        postGood.setUserId(1L);
+        postGood.setPostId(2L);
+        postGood.setIsDeleted(1);
+        postGoodMapper.updatePostGood(postGood);
+    }
+
+    @Test
+    void listPost2(){
+        PostDTO postDTO = new PostDTO();
+//        postDTO.setCurrentUserId(1L);
+//        postDTO.setIsDeleted(0);
+        List<PostDTO> postDTOS = postMapper.listPosts(postDTO);
+        for (PostDTO p:postDTOS) {
+            System.out.println(p);
+        }
+    }
+
+
+    @Resource
+    private JobMapper jobMapper;
+
+    @Test
+    void listJob(){
+        Job job = new Job();
+        job.setCampus("郑州大学");
+        List<Job> jobs = jobMapper.queryJob(job);
+        for (Job j:jobs) {
+            System.out.println(j.toString());
+        }
+    }
+
+
+    @Resource
+    private UserMapper userMapper;
+
+    @Test
+    void queryUser(){
+        User user = new User();
+        user.setId(4);
+        User result = userMapper.queryUser(user);
+        System.out.println(result);
+    }
 
 }
