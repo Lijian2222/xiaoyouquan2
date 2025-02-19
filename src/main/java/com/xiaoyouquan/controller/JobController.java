@@ -32,7 +32,14 @@ public class JobController {
      */
     @PostMapping("/query")
     public Result<List<Job>> queryJobs(@RequestBody Job job){
+        String campus = job.getCampus();
         List<Job> jobs = jobService.queryJobs(job);
+        //把传进来的学校参数作为结果再传回去
+        for (Job j:jobs) {
+            j.setCampus(campus);
+        }
         return Result.success(jobs);
     }
+
+
 }

@@ -8,7 +8,7 @@
     <!--查询岗位-->
     <!--id:方法名  resultType:单条记录所封装的类型-->
     <select id="queryJob" resultType="com.xiaoyouquan.pojo.Job">
-        select j.id, j.user_id, j.job_name, j.job_detail, j.position1, j.position2, j.position3, j.nature, j.academic_acquired, j.experience_acquired, j.job_belonging, j.publish_time, j.salary_start, j.salary_end, j.salary_nums,u.nickname
+        select j.id, j.user_id, j.job_name, j.job_detail, j.position, j.nature, j.academic_acquired, j.experience_acquired, j.job_belonging, j.publish_time, j.salary_start, j.salary_end, j.salary_nums,u.nickname
         from job j join user u on j.user_id = u.id
         <where>
             <if test=" campus!=null ">u.campus1 = #{campus} or u.campus2 = #{campus} or u.campus3 = #{campus}</if>

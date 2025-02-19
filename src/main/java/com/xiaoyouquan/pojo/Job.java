@@ -19,11 +19,7 @@ public class Job {
 
     private String jobDetail;
 
-    private String position1;
-
-    private String position2;
-
-    private String position3;
+    private String position;
 
     private String nature;
 
