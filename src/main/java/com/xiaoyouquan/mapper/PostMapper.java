@@ -2,7 +2,6 @@ package com.xiaoyouquan.mapper;
 
 
 import com.xiaoyouquan.pojo.Post;
-import com.xiaoyouquan.pojo.dto.PostDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +21,7 @@ public interface PostMapper {
      * @param post
      * @return {@link List }<{@link PostDTO }>
      */
-    List<PostDTO> listPosts(PostDTO post);
+    List<Post> listPosts(Post post);
 
 
 

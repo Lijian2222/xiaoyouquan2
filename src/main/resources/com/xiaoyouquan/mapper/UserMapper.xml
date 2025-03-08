@@ -14,8 +14,23 @@
             <if test=" gender!=null ">and gender = #{gender}</if>
             <if test=" age!=null ">and age = #{age}</if>
             <if test=" signature!=null and signature!='' ">and signature = #{signature}</if>
+            <if test=" phoneNumber!=null and phoneNumber!='' "> and phone_number = #{phoneNumber}</if>
         </where>
         order by id desc
     </select>
+
+    <!--  用户注册的时候,只用获取手机号和头像  -->
+    <insert id="insertUser">
+        insert into user
+            (
+                <if test=" phoneNumber!=null and phoneNumber!='' ">phone_number</if>
+                <if test=" profilePicture !=null and profilePicture != '' ">,profile_picture</if>
+            )
+        values
+            (
+                <if test=" phoneNumber!=null and phoneNumber!='' ">#{phoneNumber}</if>
+                <if test=" profilePicture !=null and profilePicture != '' ">,#{profilePicture}</if>
+            )
+    </insert>
 
 </mapper>

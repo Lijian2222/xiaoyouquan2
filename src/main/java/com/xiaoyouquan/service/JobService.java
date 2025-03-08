@@ -1,10 +1,21 @@
 package com.xiaoyouquan.service;
 
+import com.xiaoyouquan.mapper.JobMapper;
 import com.xiaoyouquan.pojo.Job;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-public interface JobService {
+@Service
+public class JobService {
 
-    List<Job> queryJobs(Job job);
+
+    @Resource
+    private JobMapper jobMapper;
+
+
+    public List<Job> queryJobs(Job job) {
+        return jobMapper.queryJob(job);
+    }
 }

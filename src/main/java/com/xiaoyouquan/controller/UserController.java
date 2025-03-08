@@ -32,4 +32,15 @@ public class UserController {
         return Result.success(userService.queryUser(user));
     }
 
+
+    /**用户登录，如果已经注册，返回user资料，否贼创建用户，并返回null
+     * @param user
+     * @return {@link Result }<{@link User }>
+     */
+    @PostMapping("/logIn")
+    public Result<User> logIn(@RequestBody User user){
+        System.out.println(user.toString());
+        return Result.success(userService.logIn(user));
+    }
+
 }

@@ -3,7 +3,6 @@ package com.xiaoyouquan.controller;
 
 import com.xiaoyouquan.pojo.Job;
 import com.xiaoyouquan.pojo.Result;
-import com.xiaoyouquan.pojo.dto.PostDTO;
 import com.xiaoyouquan.service.JobService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,8 +1,7 @@
 package com.xiaoyouquan.config;
 
 /**
- * 启用跨域配置
- * 编写SpringMVCConfig类使用FilterConfig中的配置
+ * springMVC拦截器
  *
  * @author Administrator
  */
@@ -10,11 +9,10 @@ package com.xiaoyouquan.config;
 
 import com.xiaoyouquan.interceptor.LoginCheckInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 
 

@@ -8,7 +8,6 @@ import com.xiaoyouquan.pojo.Job;
 import com.xiaoyouquan.pojo.Post;
 import com.xiaoyouquan.pojo.PostGood;
 import com.xiaoyouquan.pojo.User;
-import com.xiaoyouquan.pojo.dto.PostDTO;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.ibatis.annotations.Param;
@@ -80,11 +79,11 @@ class Xiaoyouquan2ApplicationTests {
 
     @Test
     void querPost(){
-        PostDTO postDTO = new PostDTO();
-        postDTO.setIsDeleted(0);
-        postDTO.setCampus("哈尔滨工业大学");
-        List<PostDTO> postDTOS = postMapper.listPosts(postDTO);
-        for (PostDTO p:postDTOS) {
+        Post Post = new Post();
+        Post.setIsDeleted(0);
+        Post.setCampus("哈尔滨工业大学");
+        List<Post> PostS = postMapper.listPosts(Post);
+        for (Post p:PostS) {
             System.out.println(p);
         }
     }
@@ -100,11 +99,11 @@ class Xiaoyouquan2ApplicationTests {
 
     @Test
     void listPost2(){
-        PostDTO postDTO = new PostDTO();
-//        postDTO.setCurrentUserId(1L);
-//        postDTO.setIsDeleted(0);
-        List<PostDTO> postDTOS = postMapper.listPosts(postDTO);
-        for (PostDTO p:postDTOS) {
+        Post Post = new Post();
+//        Post.setCurrentUserId(1L);
+//        Post.setIsDeleted(0);
+        List<Post> PostS = postMapper.listPosts(Post);
+        for (Post p:PostS) {
             System.out.println(p);
         }
     }
@@ -154,5 +153,11 @@ class Xiaoyouquan2ApplicationTests {
     }
 
 
+    @Test
+    public void testInsertUser(){
+        User user = new User();
+        user.setPhoneNumber("18639552024");
+        userMapper.insertUser(user);
+    }
 
 }

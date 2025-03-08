@@ -43,6 +43,17 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--pagehelper-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.pagehelper</groupId>-->
+<!--            <artifactId>pagehelper-spring-boot-starter</artifactId>-->
+<!--            <version>1.2.12</version>-->
+<!--        </dependency>-->
         <!--jwt令牌-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -54,6 +65,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.62</version>
+        </dependency>
+        <!--验证码-->
+        <dependency>
+            <groupId>com.ramostear</groupId>
+            <artifactId>Happy-Captcha</artifactId>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 

@@ -1,11 +1,31 @@
 package com.xiaoyouquan.service;
 
+import com.xiaoyouquan.mapper.PostMapper;
 import com.xiaoyouquan.pojo.Post;
-import com.xiaoyouquan.pojo.dto.PostDTO;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-public interface PostService {
+@Service
+public class PostService {
 
-    List<PostDTO> queryPosts(PostDTO post);
+    @Resource
+    private PostMapper postMapper;
+
+
+    public List<Post> queryPosts(Post post) {
+        List<Post> posts = postMapper.listPosts(post);
+        return posts;
+    }
+    
+
+
+
+
+
+
+
+
+
 }
