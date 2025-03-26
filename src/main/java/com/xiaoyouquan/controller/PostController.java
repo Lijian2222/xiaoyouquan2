@@ -4,10 +4,7 @@ package com.xiaoyouquan.controller;
 import com.xiaoyouquan.pojo.Post;
 import com.xiaoyouquan.pojo.Result;
 import com.xiaoyouquan.service.PostService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,6 +33,12 @@ public class PostController {
     }
 
 
+    @GetMapping("/addViewNums")
+    public Result addViewNums(Integer postId){
+//        System.out.println(postId);
+        postService.addViewNums(postId);
+        return Result.success(null);
+    }
 
 
 

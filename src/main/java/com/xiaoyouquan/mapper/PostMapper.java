@@ -19,7 +19,7 @@ public interface PostMapper {
      * 校友圈输入campus=xxx and isDeleted=0
      * 关注输入 currentUserId=xxx and isDeleted=0
      * @param post
-     * @return {@link List }<{@link PostDTO }>
+     * @return {@link List }
      */
     List<Post> listPosts(Post post);
 
@@ -43,7 +43,11 @@ public interface PostMapper {
     void subGoodNums(@Param("postId") Long postId);
 
 
-
+    /**用户点击帖子，帖子浏览量+1
+     * @param postId
+     */
+    @Update("UPDATE post SET view_nums = view_nums +1 WHERE id = #{postId}")
+    void addViewNums(@Param("postId") Integer postId);
 
 
 

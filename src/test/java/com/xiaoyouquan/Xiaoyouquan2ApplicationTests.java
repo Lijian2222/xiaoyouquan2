@@ -160,4 +160,10 @@ class Xiaoyouquan2ApplicationTests {
         userMapper.insertUser(user);
     }
 
+
+    @Test
+    public void testAddViewNums(){
+
+        postMapper.addViewNums(1);
+    }
 }

@@ -19,7 +19,10 @@ public class PostService {
         return posts;
     }
     
-
+    //点击帖子内容，给帖子增加浏览量
+    public void addViewNums(Integer postId){
+        postMapper.addViewNums(postId);
+    }
 
 
 

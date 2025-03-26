@@ -48,4 +48,6 @@ public class User {
     private String profilePicture;
 
     private String phoneNumber;
+    
+    private String password;
 }

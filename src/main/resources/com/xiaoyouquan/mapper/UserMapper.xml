@@ -5,6 +5,7 @@
 <mapper namespace="com.xiaoyouquan.mapper.UserMapper">
 
     <!--条件查询用户信息，查询有哪些学校-->
+    <!--根据手机号查询用户是否存在，存在就拿取用户数据-->
     <!--id:方法名  resultType:单条记录所封装的类型-->
     <select id="queryUser" resultType="com.xiaoyouquan.pojo.User">
         select * from user u
@@ -15,6 +16,7 @@
             <if test=" age!=null ">and age = #{age}</if>
             <if test=" signature!=null and signature!='' ">and signature = #{signature}</if>
             <if test=" phoneNumber!=null and phoneNumber!='' "> and phone_number = #{phoneNumber}</if>
+             and is_deleted = 0
         </where>
         order by id desc
     </select>

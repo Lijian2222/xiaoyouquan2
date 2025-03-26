@@ -21,7 +21,7 @@
             <if test=" publishTime!=null and publishTime!='' ">and publishTime = #{publishTime}</if>
             <if test=" goodNums!=null ">and good_nums = #{goodNums}</if>
             <if test=" viewNums!=null ">and view_nums = #{viewNums}</if>
-            <if test=" isDeleted!=null ">and is_deleted = #{isDeleted}</if>
+            <if test=" isDeleted!=null ">and p.is_deleted = #{isDeleted}</if>
             <if test=" currentUserId!=null ">and f.user_id = #{currentUserId}</if>
             <if test=" campus!=null and campus!='' ">
                 and (u.campus1 = #{campus}
