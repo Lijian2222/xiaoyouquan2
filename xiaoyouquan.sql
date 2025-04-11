@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql.3306
+ Source Server         : ali
  Source Server Type    : MySQL
- Source Server Version : 80040 (8.0.40)
- Source Host           : 192.168.206.130:3306
+ Source Server Version : 80041 (8.0.41)
+ Source Host           : 39.107.221.247:3306
  Source Schema         : xiaoyouquan
 
  Target Server Type    : MySQL
- Target Server Version : 80040 (8.0.40)
+ Target Server Version : 80041 (8.0.41)
  File Encoding         : 65001
 
- Date: 24/03/2025 18:34:19
+ Date: 11/04/2025 11:02:21
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `comment`  (
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `create_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `is_deleted` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comment
@@ -45,7 +45,7 @@ CREATE TABLE `favorite`  (
   `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '0表示concern关注的是用户id,1表示concern关注的是岗位id',
   `concerned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of favorite
@@ -73,7 +73,7 @@ CREATE TABLE `job`  (
   `salary_end` int NULL DEFAULT NULL,
   `salary_nums` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of job
@@ -96,7 +96,7 @@ CREATE TABLE `message`  (
   `recv_user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `is_deleted` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of message
@@ -110,14 +110,14 @@ CREATE TABLE `post`  (
   `id` int NOT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL,
-  `publish_time` datetime NOT NULL,
-  `good_nums` int NOT NULL,
-  `view_nums` int NOT NULL,
-  `is_deleted` int NOT NULL,
-  `comment_nums` int NOT NULL,
-  `retweet` int NOT NULL COMMENT '转发量',
+  `publish_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `good_nums` int NOT NULL DEFAULT 0,
+  `view_nums` int NOT NULL DEFAULT 0,
+  `is_deleted` int NOT NULL DEFAULT 0,
+  `comment_nums` int NOT NULL DEFAULT 0,
+  `retweet` int NOT NULL DEFAULT 0 COMMENT '转发量',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of post
@@ -126,7 +126,19 @@ INSERT INTO `post` VALUES (1, '睡不着了,哥们国企开出6*12...', 1, '2024
 INSERT INTO `post` VALUES (2, '人人都在说大厂,有没有值得去的中小厂推荐?', 2, '2024-12-10 15:22:18', 232, 2000, 0, 255, 0);
 INSERT INTO `post` VALUES (3, '家人们,现在大环境咋样了啊?', 3, '2024-12-13 19:23:01', 222, 50000, 0, 45, 0);
 INSERT INTO `post` VALUES (4, '华子给我发offer了', 4, '2024-12-14 08:23:59', 670, 3523, 0, 22, 0);
-INSERT INTO `post` VALUES (5, '我是IDEA添加的数据', 1, '2024-12-18 15:03:28', 11, 2, 0, 0, 0);
+INSERT INTO `post` VALUES (5, '我是IDEA添加的数据', 1, '2024-12-18 15:03:28', 11, 4, 0, 0, 0);
+INSERT INTO `post` VALUES (6, '有一说一，今年这春季实习真的卷，不仅是来的早，而且大家好像都很在意的样子。经历了第一波校招的毒打，现在已经哀嚎一片。', 6, '2025-04-10 23:24:10', 33, 22, 0, 55, 0);
+INSERT INTO `post` VALUES (7, '实习经历不是给HR看的，你只要写了实习经历，HR是不对你实习经历进行过滤的，除非你不会写写的非常敷衍。', 3, '2025-04-09 23:26:03', 66, 66, 0, 0, 0);
+INSERT INTO `post` VALUES (8, '实习，不要迷恋大厂光环，与其在大厂打杂不如去中小厂找一个业务结合紧密的项目，干点实事', 7, '2025-04-02 23:27:38', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (9, '大厂就像可口可乐，它只是在货架上放着都没到你手里你就知道它味道错不了。', 7, '2025-04-11 23:29:18', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (10, '小厂就像杂牌小甜水，可能给你意想不到的惊喜，但也有概率给你难以预料的惊吓。', 7, '2025-04-05 23:30:32', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (11, '真心建议大家海投，把面试当成升级打怪，面一个挂一个后我也是练就超厚脸皮法！！！', 8, '2025-04-17 23:31:50', 2, 2, 0, 0, 0);
+INSERT INTO `post` VALUES (12, '求求各位hr看看我吧', 4, '2025-04-12 23:32:58', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (13, '毁灭吧！真的毕业即失业了。还是没有进展，我真的哭了', 9, '2025-04-10 23:35:22', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (14, '学Java的下场，学吧，这就是下场。', 9, '2025-04-09 23:36:30', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (15, '目前投了很多大厂，就是毫无头绪的海投，感觉作为一个双非工科女真的完蛋了。', 10, '2025-04-09 23:42:53', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (16, '大一大二的暑假全用来打暑假工了，做的是活动摄影师的工作，完全没想到可以找专业相关的实习。', 10, '2025-04-10 23:44:19', 0, 0, 0, 0, 0);
+INSERT INTO `post` VALUES (17, '上个月投了鹅厂的商务产品实习生，当时乱投的，没有了解这是个销售岗位，然后被邀请进了群面。', 10, '2025-04-10 23:45:53', 0, 0, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for post_good
@@ -138,7 +150,7 @@ CREATE TABLE `post_good`  (
   `post_id` int NULL DEFAULT NULL,
   `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '0表示未删除，1表示已经删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of post_good
@@ -187,7 +199,7 @@ CREATE TABLE `user`  (
   `password` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '123456',
   `is_deleted` tinyint NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -197,5 +209,10 @@ INSERT INTO `user` VALUES (2, '大朗该喝药了', 0, 23, ' 平安喜乐', 0, '
 INSERT INTO `user` VALUES (3, 'QiQi', 0, 24, 'If you feel lost, stay away from the crowd', 0, '哈尔滨工业大学', NULL, NULL, NULL, NULL, NULL, '本科', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
 INSERT INTO `user` VALUES (4, '熊大爱睡觉', 1, 24, 'do not say no', 0, '郑州大学', '哈尔滨工业大学', '国防科技大学', NULL, NULL, NULL, '本科', '本科', '硕士', NULL, NULL, NULL, '../../static/userHeader1.png', '18639552024', '123456', 0);
 INSERT INTO `user` VALUES (5, '袁老师', 1, 42, '暂无', 0, '国防科技大学', NULL, NULL, NULL, NULL, NULL, '本科', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
+INSERT INTO `user` VALUES (6, '图拉丁吧吧主', 1, 33, '可是我的自卑胜过了一切爱我的', 0, '哈尔滨工业大学', '湖南大学', NULL, NULL, NULL, NULL, '本科', '硕士', NULL, NULL, NULL, NULL, NULL, '18142862054', '123456', 0);
+INSERT INTO `user` VALUES (7, '薄荷撞晚风', 0, 22, '菜就要练', 0, '郑州大学', '哈尔滨工业大学', NULL, NULL, NULL, NULL, '本科', '本科', NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
+INSERT INTO `user` VALUES (8, '牛客大斯兄', 1, 25, '这就是计算机吗', 0, '郑州大学', '哈尔滨工业大学', NULL, NULL, NULL, NULL, '本科', '硕士', NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
+INSERT INTO `user` VALUES (9, '你不许说话', 0, 21, '土木狗都不学', 0, '郑州大学', '国防科技大学', NULL, NULL, NULL, NULL, '本科', '硕士', NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
+INSERT INTO `user` VALUES (10, '找工作的茶叶蛋', 1, 26, '正在求职', 0, '郑州大学', '哈尔滨工业大学', NULL, NULL, NULL, NULL, '本科', '本科', NULL, NULL, NULL, NULL, NULL, NULL, '123456', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

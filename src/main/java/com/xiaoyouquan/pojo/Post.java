@@ -43,4 +43,8 @@ public class Post {
     //额外属性，帖子详情页显示用户的个性签名
     private String signature;
 
+    private Integer pageIndex;
+
+    private Integer pageSize;
+
 }

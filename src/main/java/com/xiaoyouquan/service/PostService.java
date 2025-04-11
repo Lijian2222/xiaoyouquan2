@@ -1,5 +1,7 @@
 package com.xiaoyouquan.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.xiaoyouquan.mapper.PostMapper;
 import com.xiaoyouquan.pojo.Post;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,14 @@ public class PostService {
 
 
     public List<Post> queryPosts(Post post) {
-        List<Post> posts = postMapper.listPosts(post);
+
+        //设置分页查询的参数
+        PageHelper.startPage(post.getPageIndex(),post.getPageSize());
+        //查询所有数据
+        Page p = (Page) postMapper.listPosts(post);
+
+        List<Post> posts = p.getResult();
+
         return posts;
     }
     

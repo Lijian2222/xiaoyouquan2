@@ -28,10 +28,18 @@ public class PostController {
      */
     @PostMapping("/query")
     public Result<List<Post>> queryPosts(@RequestBody Post post){
+        System.out.println("11111");
+        if (post.getPageIndex()==null) post.setPageIndex(1);
+        if (post.getPageSize()==null) post.setPageSize(5);
         List<Post> posts = postService.queryPosts(post);
         return Result.success(posts);
     }
 
+
+    @GetMapping("/test")
+    public Result test(){
+        return Result.success("域名测试");
+    }
 
     @GetMapping("/addViewNums")
     public Result addViewNums(Integer postId){

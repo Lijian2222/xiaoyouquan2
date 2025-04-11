@@ -24,7 +24,6 @@ public interface PostMapper {
     List<Post> listPosts(Post post);
 
 
-
     //插入帖子
     void insertPost(Post post);
 
