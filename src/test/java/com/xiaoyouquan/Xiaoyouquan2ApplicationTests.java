@@ -1,13 +1,7 @@
 package com.xiaoyouquan;
 
-import com.xiaoyouquan.mapper.JobMapper;
-import com.xiaoyouquan.mapper.PostGoodMapper;
-import com.xiaoyouquan.mapper.PostMapper;
-import com.xiaoyouquan.mapper.UserMapper;
-import com.xiaoyouquan.pojo.Job;
-import com.xiaoyouquan.pojo.Post;
-import com.xiaoyouquan.pojo.PostGood;
-import com.xiaoyouquan.pojo.User;
+import com.xiaoyouquan.mapper.*;
+import com.xiaoyouquan.pojo.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.ibatis.annotations.Param;
@@ -81,7 +75,8 @@ class Xiaoyouquan2ApplicationTests {
     void querPost(){
         Post Post = new Post();
         Post.setIsDeleted(0);
-        Post.setCampus("哈尔滨工业大学");
+//        Post.setCampus("哈尔滨工业大学");
+        Post.setUserId(4L);
         List<Post> PostS = postMapper.listPosts(Post);
         for (Post p:PostS) {
             System.out.println(p);
@@ -115,7 +110,8 @@ class Xiaoyouquan2ApplicationTests {
     @Test
     void listJob(){
         Job job = new Job();
-        job.setCampus("郑州大学");
+//        job.setCampus("郑州大学");
+        job.setUserId(4);
         List<Job> jobs = jobMapper.queryJob(job);
         for (Job j:jobs) {
             System.out.println(j.toString());
@@ -165,5 +161,60 @@ class Xiaoyouquan2ApplicationTests {
     public void testAddViewNums(){
 
         postMapper.addViewNums(1);
+    }
+
+    @Test
+    public void insertJob(){
+        Job job = new Job();
+        job.setUserId(4);
+        job.setJobName("测试工程师");
+        job.setJobDetail("负责项目功能测试，熟悉vue、springboot等技术栈");
+        job.setPosition("哈尔滨");
+        job.setNature("私企");
+        job.setAcademicAcquired("本科");
+        job.setExperienceAcquired("1-3年");
+        job.setJobBelonging("互联网");
+        job.setPublishTime(new Timestamp(System.currentTimeMillis()));
+        job.setSalaryStart(14000);
+        job.setSalaryEnd(24000);
+        job.setSalaryNums(14);
+        job.setIsDeleted(0);
+        jobMapper.insertJob(job);
+    }
+
+
+    //favoriteMapper测试
+    @Resource
+    private FavoriteMapper favoriteMapper;
+
+    @Test
+    public void insertFavorite(){
+        Favorite favorite = new Favorite();
+        favorite.setUserId(4);
+        favorite.setStatus(1);//1表示帖子 0表示用户
+        favorite.setConcerned(4);
+        favoriteMapper.insertFavorite(favorite);
+    }
+
+    @Test
+    public void queryFavorite(){
+        Favorite favorite = new Favorite();
+        favorite.setUserId(4);
+        favorite.setStatus(1);
+        favorite.setConcerned(4);
+        List<Favorite> favorites = favoriteMapper.queryFavorite(favorite);
+        for (Favorite f:favorites) {
+            System.out.println(f.toString());
+        }
+    }
+
+    @Test
+    public void updateFavorte(){
+        Favorite favorite = new Favorite();
+        favorite.setUserId(4);
+        favorite.setStatus(1);
+        favorite.setConcerned(4);
+        favorite.setIsDeleted(1);
+        favoriteMapper.updateFavorite(favorite);
     }
 }

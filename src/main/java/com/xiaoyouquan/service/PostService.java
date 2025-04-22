@@ -34,10 +34,12 @@ public class PostService {
     }
 
 
-
-
-
-
-
-
+    public void insertPost(Post post) {
+        if (post.getGoodNums()==null) post.setGoodNums(0);
+        if (post.getViewNums()==null) post.setViewNums(0);
+        if (post.getRetweet()==null) post.setRetweet(0);
+        if (post.getCommentNums()==null) post.setCommentNums(0);
+        if (post.getIsDeleted()==null) post.setIsDeleted(0);
+        postMapper.insertPost(post);
+    }
 }

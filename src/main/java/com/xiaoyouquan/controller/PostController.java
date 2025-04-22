@@ -4,6 +4,7 @@ package com.xiaoyouquan.controller;
 import com.xiaoyouquan.pojo.Post;
 import com.xiaoyouquan.pojo.Result;
 import com.xiaoyouquan.service.PostService;
+import javafx.geometry.Pos;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -48,7 +49,12 @@ public class PostController {
         return Result.success(null);
     }
 
-
+    @PostMapping("/insert")
+    public Result insertPost(@RequestBody Post post){
+//        System.out.println("收到请求");
+        postService.insertPost(post);
+        return Result.success(null);
+    }
 
 
 

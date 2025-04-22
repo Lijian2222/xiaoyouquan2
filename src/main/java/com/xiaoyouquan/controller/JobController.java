@@ -27,7 +27,7 @@ public class JobController {
      * 查询工作
      *
      * @param job
-     * @return {@link List }<{@link PostDTO }>
+     * @return {@link Result }<{@link List }<{@link Job }>>
      */
     @PostMapping("/query")
     public Result<List<Job>> queryJobs(@RequestBody Job job){
@@ -41,4 +41,9 @@ public class JobController {
     }
 
 
+    @PostMapping("/insert")
+    public Result insertJob(@RequestBody Job job){
+        jobService.insertJob(job);
+        return Result.success(null);
+    }
 }

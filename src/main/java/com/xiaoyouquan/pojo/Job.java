@@ -37,9 +37,12 @@ public class Job {
 
     private Timestamp publishTime;
 
+    private Integer isDeleted;
+
     //额外属性，发布人的用户名
     private String nickname;
 
     //额外属性，用来接收前端传回来的学校，根据学校查询岗位
     private String campus;
+
 }

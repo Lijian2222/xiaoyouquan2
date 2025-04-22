@@ -12,7 +12,16 @@
         from job j join user u on j.user_id = u.id
         <where>
             <if test=" campus!=null ">u.campus1 = #{campus} or u.campus2 = #{campus} or u.campus3 = #{campus}</if>
+            <if test=" userId!=null ">and user_id = #{userId}</if>
         </where>
     </select>
+
+
+    <insert id="insertJob" parameterType="com.xiaoyouquan.pojo.Job">
+        INSERT INTO job (id,user_id,job_name,job_detail,position,nature,academic_acquired,experience_acquired,job_belonging,publish_time,salary_start,salary_end,salary_nums,is_deleted)
+        VALUES (#{id},#{userId},#{jobName},#{jobDetail},#{position},#{nature},#{academicAcquired},#{experienceAcquired},#{jobBelonging},#{publishTime},#{salaryStart},#{salaryEnd},#{salaryNums},#{isDeleted})
+    </insert>
+
+
 
 </mapper>

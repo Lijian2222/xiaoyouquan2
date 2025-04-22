@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyouquan.mapper.FavoriteMapper">
+
+
+
+    <insert id="insertFavorite" parameterType="com.xiaoyouquan.pojo.Favorite">
+        INSERT INTO favorite (id, user_id, status, concerned, is_deleted)
+        VALUES (#{id},#{userId},#{status},#{concerned},#{isDeleted})
+    </insert>
+
+
+    <select id="queryFavorite" resultType="com.xiaoyouquan.pojo.Favorite">
+        select * from favorite
+        <where>
+            <if test=" id!=null ">id = #{id}</if>
+            <if test=" userId!=null ">and user_id = #{userId}</if>
+            <if test=" status!=null ">and status = #{status}</if>
+            <if test=" concerned!=null ">and concerned = #{concerned}</if>
+            <if test=" isDeleted!=null ">and is_deleted = #{isDeleted}</if>
+        </where>
+    </select>
+
+    <update id="updateFavorite" parameterType="com.xiaoyouquan.pojo.Favorite">
+        UPDATE favorite SET is_deleted = #{isDeleted}
+        WHERE concerned = #{concerned} AND user_id = #{userId}
+    </update>
+
+</mapper>

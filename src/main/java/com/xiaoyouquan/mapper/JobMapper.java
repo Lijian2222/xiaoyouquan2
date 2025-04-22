@@ -11,4 +11,5 @@ public interface JobMapper {
 
     List<Job> queryJob(Job job);
 
+    void insertJob(Job job);
 }

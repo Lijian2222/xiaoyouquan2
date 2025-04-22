@@ -5,8 +5,8 @@
 <mapper namespace="com.xiaoyouquan.mapper.PostMapper">
 
     <insert id="insertPost" parameterType="com.xiaoyouquan.pojo.Post">
-        INSERT INTO post (id,content,user_id,publish_time,good_nums,view_nums,comment_nums)
-        VALUES (#{id}, #{content},#{userId},#{publishTime},#{goodNums},#{viewNums},#{commentNums})
+        INSERT INTO post (id,content,user_id,publish_time,good_nums,view_nums,comment_nums,retweet,is_deleted)
+        VALUES (#{id}, #{content},#{userId},#{publishTime},#{goodNums},#{viewNums},#{commentNums},#{retweet},#{isDeleted})
     </insert>
 
     <!--条件查询帖子信息(推荐/校友圈/关注)-->
