@@ -45,4 +45,10 @@ public class Job {
     //额外属性，用来接收前端传回来的学校，根据学校查询岗位
     private String campus;
 
+    //额外属性，用来分页查询
+    private Integer pageIndex;
+
+    //额外属性，用来分页查询
+    private Integer pageSize;
+
 }

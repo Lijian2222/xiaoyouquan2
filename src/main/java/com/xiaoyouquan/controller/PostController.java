@@ -21,7 +21,7 @@ public class PostController {
     @Resource
     private PostService postService;
 
-    /**查询帖子
+    /**查询帖子，支持分页查询
      * 推荐只需要接收isDeleted=0
      * 校友圈还需要接收campus=xxx
      * @param post
@@ -29,7 +29,7 @@ public class PostController {
      */
     @PostMapping("/query")
     public Result<List<Post>> queryPosts(@RequestBody Post post){
-        System.out.println("11111");
+//        System.out.println("11111");
         if (post.getPageIndex()==null) post.setPageIndex(1);
         if (post.getPageSize()==null) post.setPageSize(5);
         List<Post> posts = postService.queryPosts(post);

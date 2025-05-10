@@ -103,7 +103,7 @@ class Xiaoyouquan2ApplicationTests {
         }
     }
 
-
+    //job测试
     @Resource
     private JobMapper jobMapper;
 
@@ -118,7 +118,37 @@ class Xiaoyouquan2ApplicationTests {
         }
     }
 
+    @Test
+    public void insertJob(){
+        Job job = new Job();
+        job.setUserId(4);
+        job.setJobName("测试工程师");
+        job.setJobDetail("负责项目功能测试，熟悉vue、springboot等技术栈");
+        job.setPosition("哈尔滨");
+        job.setNature("私企");
+        job.setAcademicAcquired("本科");
+        job.setExperienceAcquired("1-3年");
+        job.setJobBelonging("互联网");
+        job.setPublishTime(new Timestamp(System.currentTimeMillis()));
+        job.setSalaryStart(14000);
+        job.setSalaryEnd(24000);
+        job.setSalaryNums(14);
+        job.setIsDeleted(0);
+        jobMapper.insertJob(job);
+    }
 
+    @Test
+    public void queryMyFavorite(){
+        Job job = new Job();
+        job.setUserId(4);
+        List<Job> jobs = jobMapper.queryMyFavorite(job);
+        for (Job j:jobs) {
+            System.out.println(j.toString());
+        }
+    }
+
+
+    //user测试
     @Resource
     private UserMapper userMapper;
 
@@ -163,24 +193,9 @@ class Xiaoyouquan2ApplicationTests {
         postMapper.addViewNums(1);
     }
 
-    @Test
-    public void insertJob(){
-        Job job = new Job();
-        job.setUserId(4);
-        job.setJobName("测试工程师");
-        job.setJobDetail("负责项目功能测试，熟悉vue、springboot等技术栈");
-        job.setPosition("哈尔滨");
-        job.setNature("私企");
-        job.setAcademicAcquired("本科");
-        job.setExperienceAcquired("1-3年");
-        job.setJobBelonging("互联网");
-        job.setPublishTime(new Timestamp(System.currentTimeMillis()));
-        job.setSalaryStart(14000);
-        job.setSalaryEnd(24000);
-        job.setSalaryNums(14);
-        job.setIsDeleted(0);
-        jobMapper.insertJob(job);
-    }
+
+
+
 
 
     //favoriteMapper测试

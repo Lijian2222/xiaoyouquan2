@@ -5,8 +5,9 @@
 <mapper namespace="com.xiaoyouquan.mapper.JobMapper">
 
 
-    <!--查询岗位-->
+    <!--查询岗位，join user表只是为了拿到username,-->
     <!--id:方法名  resultType:单条记录所封装的类型-->
+    <!--  这里的userId是指查询该岗位的发布人  -->
     <select id="queryJob" resultType="com.xiaoyouquan.pojo.Job">
         select j.id, j.user_id, j.job_name, j.job_detail, j.position, j.nature, j.academic_acquired, j.experience_acquired, j.job_belonging, j.publish_time, j.salary_start, j.salary_end, j.salary_nums,u.nickname
         from job j join user u on j.user_id = u.id
@@ -16,6 +17,21 @@
         </where>
     </select>
 
+
+    <!--查询我收藏的岗位，join user表只是为了拿到username-->
+    <!--id:方法名  resultType:单条记录所封装的类型-->
+    <!--  这里的userId是指我的id,查询我收藏的岗位  -->
+    <select id="queryMyFavorite" resultType="com.xiaoyouquan.pojo.Job">
+        select j.id, j.user_id, j.job_name, j.job_detail, j.position, j.nature, j.academic_acquired, j.experience_acquired, j.job_belonging, j.publish_time, j.salary_start, j.salary_end, j.salary_nums,u.nickname
+        from job j
+        join user u on j.user_id = u.id
+        join favorite f on f.concerned = j.id
+        <where>
+            <if test=" campus!=null ">u.campus1 = #{campus} or u.campus2 = #{campus} or u.campus3 = #{campus}</if>
+            <if test=" userId!=null ">and f.user_id = #{userId}</if>
+            <if test=" isDeleted!=null ">and f.is_deleted = #{isDeleted}</if>
+        </where>
+    </select>
 
     <insert id="insertJob" parameterType="com.xiaoyouquan.pojo.Job">
         INSERT INTO job (id,user_id,job_name,job_detail,position,nature,academic_acquired,experience_acquired,job_belonging,publish_time,salary_start,salary_end,salary_nums,is_deleted)

@@ -18,7 +18,16 @@ public class FavoriteService {
     }
 
     public void insertFavorite(Favorite favorite){
-        favoriteMapper.insertFavorite(favorite);
+        //先查询是否存在
+        List<Favorite> favorites = favoriteMapper.queryFavorite(favorite);
+        //如果不存在直接插入
+        if (favorites.isEmpty()){
+            favoriteMapper.insertFavorite(favorite);
+        }else { //如果已经存在就修改
+            favoriteMapper.updateFavorite(favorite);
+        }
+
+
     }
 
     public void updateFavorite(Favorite favorite){

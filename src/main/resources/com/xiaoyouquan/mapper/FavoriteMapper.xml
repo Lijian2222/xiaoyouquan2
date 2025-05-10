@@ -25,7 +25,7 @@
 
     <update id="updateFavorite" parameterType="com.xiaoyouquan.pojo.Favorite">
         UPDATE favorite SET is_deleted = #{isDeleted}
-        WHERE concerned = #{concerned} AND user_id = #{userId}
+        WHERE concerned = #{concerned} AND user_id = #{userId} AND status = #{status}
     </update>
 
 </mapper>
