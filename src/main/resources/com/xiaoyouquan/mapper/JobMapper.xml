@@ -33,6 +33,18 @@
         </where>
     </select>
 
+    <select id="queryMyDeliver" resultType="com.xiaoyouquan.pojo.Job">
+        select j.id, j.user_id, j.job_name, j.job_detail, j.position, j.nature, j.academic_acquired, j.experience_acquired, j.job_belonging, j.publish_time, j.salary_start, j.salary_end, j.salary_nums,u.nickname
+        from job j
+        join user u on j.user_id = u.id
+        join deliver d on d.job_id = j.id
+        <where>
+            <if test=" campus!=null ">u.campus1 = #{campus} or u.campus2 = #{campus} or u.campus3 = #{campus}</if>
+            <if test=" userId!=null ">and d.user_id = #{userId}</if>
+            <if test=" isDeleted!=null ">and d.is_deleted = #{isDeleted}</if>
+        </where>
+    </select>
+
     <insert id="insertJob" parameterType="com.xiaoyouquan.pojo.Job">
         INSERT INTO job (id,user_id,job_name,job_detail,position,nature,academic_acquired,experience_acquired,job_belonging,publish_time,salary_start,salary_end,salary_nums,is_deleted)
         VALUES (#{id},#{userId},#{jobName},#{jobDetail},#{position},#{nature},#{academicAcquired},#{experienceAcquired},#{jobBelonging},#{publishTime},#{salaryStart},#{salaryEnd},#{salaryNums},#{isDeleted})

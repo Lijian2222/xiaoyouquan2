@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyouquan.mapper.DeliverMapper">
+
+
+
+
+
+
+    <select id="queryDeliver" resultType="com.xiaoyouquan.pojo.Deliver">
+        select * from deliver
+        <where>
+            <if test=" id!=null ">id = #{id}</if>
+            <if test=" userId!=null ">and user_id = #{userId}</if>
+            <if test=" jobId!=null ">and job_id = #{jobId}</if>
+            <if test=" isDeleted!=null ">and is_deleted = #{isDeleted}</if>
+        </where>
+    </select>
+
+    <insert id="insertDeliver" parameterType="com.xiaoyouquan.pojo.Deliver">
+        INSERT INTO deliver (id, user_id, job_id, is_deleted)
+        VALUES (#{id},#{userId},#{jobId},#{isDeleted})
+    </insert>
+
+
+    <update id="updateDeliver" parameterType="com.xiaoyouquan.pojo.Deliver">
+        UPDATE deliver SET is_deleted = #{isDeleted}
+        WHERE job_id = #{jobId} AND user_id = #{userId}
+    </update>
+</mapper>

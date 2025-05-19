@@ -19,4 +19,6 @@ public interface JobMapper {
      * @return {@link List }<{@link Job }>
      */
     List<Job> queryMyFavorite(Job job);
+
+    List<Job> queryMyDeliver(Job job);
 }

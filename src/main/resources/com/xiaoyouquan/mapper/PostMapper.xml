@@ -12,7 +12,7 @@
     <!--条件查询帖子信息(推荐/校友圈/关注)-->
     <!--id:方法名  resultType:单条记录所封装的类型-->
     <select id="listPosts" resultType="com.xiaoyouquan.pojo.Post">
-        select *,u.nickname,u.signature from post p join user u on p.user_id=u.id
+        select *,u.nickname,u.signature,u.profile_picture from post p join user u on p.user_id=u.id
         <if test="currentUserId!=null">join favorite f on p.user_id=f.concerned</if>
         <where>
             <if test=" id!=null ">id = #{id}</if>

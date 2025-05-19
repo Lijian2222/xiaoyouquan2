@@ -56,4 +56,12 @@ public class JobController {
         List<Job> jobs = jobService.queryMyFavorite(job);
         return Result.success(jobs);
     }
+
+    @PostMapping("/queryMyDeliver")
+    public Result<List<Job>> queryMyDeliver(@RequestBody Job job){
+        if (job.getPageIndex()==null) job.setPageIndex(1);
+        if (job.getPageSize()==null) job.setPageSize(10);
+        List<Job> jobs = jobService.queryMyDeliver(job);
+        return Result.success(jobs);
+    }
 }

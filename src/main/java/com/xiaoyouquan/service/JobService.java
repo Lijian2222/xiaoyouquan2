@@ -41,4 +41,15 @@ public class JobService {
 
         return jobs;
     }
+
+    public List<Job> queryMyDeliver(Job job) {
+        //设置分页查询的参数
+        PageHelper.startPage(job.getPageIndex(),job.getPageSize());
+        //查询所有数据 并转换成Page
+        Page page = (Page) jobMapper.queryMyDeliver(job);
+
+        List<Job> jobs = page.getResult();
+
+        return jobs;
+    }
 }
