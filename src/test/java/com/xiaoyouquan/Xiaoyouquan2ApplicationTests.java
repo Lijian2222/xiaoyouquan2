@@ -232,4 +232,25 @@ class Xiaoyouquan2ApplicationTests {
         favorite.setIsDeleted(1);
         favoriteMapper.updateFavorite(favorite);
     }
+
+    @Resource
+    private UserJobRecordMapper userJobRecordMapper;
+
+    @Test
+    public void queryUserJobRecord(){
+        UserJobRecord userJobRecord = new UserJobRecord();
+        userJobRecord.setWorkPlace("北京");
+        List<UserJobRecord> userJobRecordMappers = userJobRecordMapper.queryUserJobRecord(userJobRecord);
+        for (UserJobRecord u:userJobRecordMappers){
+            System.out.println(u);
+        }
+    }
+
+    @Test
+    public void updateUserJobRecord(){
+        UserJobRecord userJobRecord = new UserJobRecord();
+        userJobRecord.setId(1);
+        userJobRecord.setCompany("tiaodong");
+        userJobRecordMapper.updateUserJobRecord(userJobRecord);
+    }
 }

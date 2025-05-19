@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyouquan.mapper.UserJobRecordMapper">
+
+    <insert id="insertUserJobRecord" parameterType="com.xiaoyouquan.pojo.UserJobRecord">
+        INSERT INTO user_job_record (id, job, company, salary, work_place, belonging, user_id, campus, major)
+        VALUES (#{id},#{job},#{company},#{salary},#{workPlace},#{belonging},#{userId},#{userId},#{campus},#{major})
+    </insert>
+
+
+    <select id="queryUserJobRecord" resultType="com.xiaoyouquan.pojo.UserJobRecord">
+        select * from user_job_record
+        <where>
+            <if test=" id!=null ">id = #{id}</if>
+            <if test=" job!=null and job!='' ">and job = #{job}</if>
+            <if test=" company!=null and company!='' ">and company = #{company}</if>
+            <if test=" salary!=null ">and salary = #{salary}</if>
+            <if test=" workPlace!=null and workPlace!='' ">and work_place = #{workPlace}</if>
+            <if test=" belonging!=null and belonging!='' ">and belonging = #{belonging}</if>
+            <if test=" userId!=null ">and user_id = #{userId}</if>
+            <if test=" campus!=null and campus!='' ">and campus = #{campus}</if>
+            <if test=" major!=null and major!='' ">and major = #{major}</if>
+        </where>
+    </select>
+
+    <!--  suffixOverrides=","：去掉最后一个多余的逗号  -->
+    <update id="updateUserJobRecord" parameterType="com.xiaoyouquan.pojo.UserJobRecord">
+        UPDATE user_job_record SET
+        <trim suffixOverrides=",">
+            <if test="job != null and job != ''">job = #{job},</if>
+            <if test="company != null and company != ''">company = #{company},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="workPlace != null and workPlace != ''">work_place = #{workPlace},</if>
+            <if test="belonging != null and belonging != ''">belonging = #{belonging},</if>
+            <if test="major != null and major != ''">major = #{major},</if>
+            <if test="campus != null and campus != ''">campus = #{campus},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+
+
+</mapper>
