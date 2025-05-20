@@ -22,18 +22,30 @@ public class FavoriteController {
     @Resource
     private FavoriteService favoriteService;
 
+    /**条件查询我的收藏
+     * @param favorite
+     * @return {@link Result }<{@link List }<{@link Favorite }>>
+     */
     @PostMapping("/query")
     public Result<List<Favorite>> queryFavorite(@RequestBody Favorite favorite){
         List<Favorite> favorites = favoriteService.queryFavorite(favorite);
         return Result.success(favorites);
     }
 
+    /**更新我的收藏
+     * @param favorite
+     * @return {@link Result }
+     */
     @PostMapping("/update")
     public Result updateFavorite(@RequestBody Favorite favorite){
         favoriteService.updateFavorite(favorite);
         return Result.success("操作成功");
     }
 
+    /**插入我的收藏
+     * @param favorite
+     * @return {@link Result }
+     */
     @PostMapping("/insert")
     public Result insertFavorite(@RequestBody Favorite favorite){
         favoriteService.insertFavorite(favorite);

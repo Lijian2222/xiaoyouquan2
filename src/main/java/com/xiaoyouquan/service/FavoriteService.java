@@ -13,10 +13,17 @@ public class FavoriteService {
     @Resource
     private FavoriteMapper favoriteMapper;
 
+    /**条件查询我的收藏
+     * @param favorite
+     * @return {@link List }<{@link Favorite }>
+     */
     public List<Favorite> queryFavorite(Favorite favorite){
         return favoriteMapper.queryFavorite(favorite);
     }
 
+    /**插入我的收藏
+     * @param favorite
+     */
     public void insertFavorite(Favorite favorite){
         //先查询是否存在
         List<Favorite> favorites = favoriteMapper.queryFavorite(favorite);
@@ -30,6 +37,9 @@ public class FavoriteService {
 
     }
 
+    /**更新我的收藏
+     * @param favorite
+     */
     public void updateFavorite(Favorite favorite){
         favoriteMapper.updateFavorite(favorite);
     }

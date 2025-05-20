@@ -36,6 +36,20 @@
     </select>
 
 
-
+    <!--  suffixOverrides=","：去掉最后一个多余的逗号  -->
+    <update id="updatePost" parameterType="com.xiaoyouquan.pojo.Post">
+        UPDATE post SET
+        <trim suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+            <if test="goodNums != null">good_nums = #{goodNums},</if>
+            <if test="viewNums != null">view_nums = #{viewNums},</if>
+            <if test="commentNums != null">comment_nums = #{commentNums},</if>
+            <if test="retweet != null">retweet = #{retweet},</if>
+            <if test="publishTime != null and publishTime != ''">publish_time = #{publishTime},</if>
+            <if test="isDeleted != null ">is_deleted = #{isDeleted},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
 
 </mapper>

@@ -17,6 +17,10 @@ public class JobService {
     private JobMapper jobMapper;
 
 
+    /**条件查询岗位
+     * @param job
+     * @return {@link List }<{@link Job }>
+     */
     public List<Job> queryJobs(Job job) {
         //设置分页查询的参数
         PageHelper.startPage(job.getPageIndex(),job.getPageSize());
@@ -26,11 +30,18 @@ public class JobService {
         return jobs;
     }
 
+    /**插入岗位
+     * @param job
+     */
     public void insertJob(Job job) {
         if (job.getIsDeleted()==null) job.setIsDeleted(0);
         jobMapper.insertJob(job);
     }
 
+    /**查询我收藏的岗位
+     * @param job
+     * @return {@link List }<{@link Job }>
+     */
     public List<Job> queryMyFavorite(Job job) {
         //设置分页查询的参数
         PageHelper.startPage(job.getPageIndex(),job.getPageSize());
@@ -42,6 +53,10 @@ public class JobService {
         return jobs;
     }
 
+    /**查询我投递的岗位
+     * @param job
+     * @return {@link List }<{@link Job }>
+     */
     public List<Job> queryMyDeliver(Job job) {
         //设置分页查询的参数
         PageHelper.startPage(job.getPageIndex(),job.getPageSize());

@@ -43,12 +43,20 @@ public class JobController {
     }
 
 
+    /**插入岗位
+     * @param job
+     * @return {@link Result }
+     */
     @PostMapping("/insert")
     public Result insertJob(@RequestBody Job job){
         jobService.insertJob(job);
         return Result.success(null);
     }
 
+    /**条件查询我的收藏+联调岗位
+     * @param job
+     * @return {@link Result }<{@link List }<{@link Job }>>
+     */
     @PostMapping("/queryMyFavorite")
     public Result<List<Job>> queryMyFavorite(@RequestBody Job job){
         if (job.getPageIndex()==null) job.setPageIndex(1);
@@ -57,6 +65,10 @@ public class JobController {
         return Result.success(jobs);
     }
 
+    /**条件查询我的投递+联查岗位
+     * @param job
+     * @return {@link Result }<{@link List }<{@link Job }>>
+     */
     @PostMapping("/queryMyDeliver")
     public Result<List<Job>> queryMyDeliver(@RequestBody Job job){
         if (job.getPageIndex()==null) job.setPageIndex(1);

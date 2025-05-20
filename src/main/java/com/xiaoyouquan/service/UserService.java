@@ -13,6 +13,10 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    /**查询用户
+     * @param user
+     * @return {@link User }
+     */
     public User queryUser(User user){
         return userMapper.queryUser(user);
     }

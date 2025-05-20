@@ -16,6 +16,10 @@ public class PostService {
     private PostMapper postMapper;
 
 
+    /**查询帖子
+     * @param post
+     * @return {@link List }<{@link Post }>
+     */
     public List<Post> queryPosts(Post post) {
 
         //设置分页查询的参数
@@ -27,13 +31,18 @@ public class PostService {
 
         return posts;
     }
-    
-    //点击帖子内容，给帖子增加浏览量
+
+    /**点击帖子内容，给帖子增加浏览量
+     * @param postId
+     */
     public void addViewNums(Integer postId){
         postMapper.addViewNums(postId);
     }
 
 
+    /**插入帖子
+     * @param post
+     */
     public void insertPost(Post post) {
         if (post.getGoodNums()==null) post.setGoodNums(0);
         if (post.getViewNums()==null) post.setViewNums(0);

@@ -50,6 +50,25 @@
         VALUES (#{id},#{userId},#{jobName},#{jobDetail},#{position},#{nature},#{academicAcquired},#{experienceAcquired},#{jobBelonging},#{publishTime},#{salaryStart},#{salaryEnd},#{salaryNums},#{isDeleted})
     </insert>
 
-
+    <!--  suffixOverrides=","：去掉最后一个多余的逗号  -->
+    <update id="updateJob" parameterType="com.xiaoyouquan.pojo.Job">
+        UPDATE job SET
+        <trim suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="jobName != null and jobName != ''">job_name = #{jobName},</if>
+            <if test="jobDetail != null and jobDetail != ''">job_detail = #{jobDetail},</if>
+            <if test="position != null and position != ''">position = #{position},</if>
+            <if test="nature != null and nature != ''">nature = #{nature},</if>
+            <if test="academicAcquired != null and academicAcquired != ''">academic_acquired = #{academicAcquired},</if>
+            <if test="experienceAcquired != null and experienceAcquired != ''">experience_acquired = #{experienceAcquired},</if>
+            <if test="jobBelonging != null and jobBelonging != ''">job_belonging = #{jobBelonging},</if>
+            <if test="publishTime != null and publishTime != ''">publish_time = #{publishTime},</if>
+            <if test="salaryStart != null">salary_start = #{salaryStart},</if>
+            <if test="salaryEnd != null">salary_end = #{salaryEnd},</if>
+            <if test="salaryNums != null">salary_nums = #{salaryNums},</if>
+            <if test="isDeleted != null ">is_deleted = #{isDeleted},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
 
 </mapper>

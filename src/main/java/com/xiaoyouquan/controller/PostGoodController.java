@@ -36,7 +36,10 @@ public class PostGoodController {
         return Result.success("取消点赞成功");
     }
 
-    //查询用户点赞信息
+    /**查询用户点赞信息
+     * @param postGood
+     * @return {@link Result }
+     */
     @PostMapping("/query")
     public Result queryPostGood(@RequestBody PostGood postGood){
         if(postGoodService.queryPostGood(postGood)){

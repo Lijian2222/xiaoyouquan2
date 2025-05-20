@@ -2,6 +2,7 @@ package com.xiaoyouquan.mapper;
 
 
 import com.xiaoyouquan.pojo.Post;
+import javafx.geometry.Pos;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -49,10 +50,10 @@ public interface PostMapper {
     void addViewNums(@Param("postId") Integer postId);
 
 
-
-
-
-
+    /**更新帖子
+     * @param post
+     */
+    void updatePost(Post post);
 
 
 

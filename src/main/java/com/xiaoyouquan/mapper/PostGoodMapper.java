@@ -10,16 +10,26 @@ import java.util.List;
 @Mapper
 public interface PostGoodMapper {
 
-    //用户点赞
+    /**用户点赞
+     * @param postGood
+     */
     void insertPostGood(PostGood postGood);
 
-    //用户取消点赞
+    /**用户取消点赞
+     * @param postGood
+     */
     void updatePostGood(PostGood postGood);
 
-    //查询帖子被用户点赞过没
+    /**查询帖子被用户点赞过没
+     * @param postGood
+     * @return {@link List }<{@link PostGood }>
+     */
     List<PostGood> queryPostGood(PostGood postGood);
 
-    //查询帖子被用户点赞过没，即表中是否有记录
+    /**查询帖子被用户点赞过没，即表中是否有记录
+     * @param postGood
+     * @return {@link List }<{@link PostGood }>
+     */
     List<PostGood> queryPostGoodExist(PostGood postGood);
 
 

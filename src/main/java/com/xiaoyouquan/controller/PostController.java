@@ -37,11 +37,18 @@ public class PostController {
     }
 
 
+    /**域名测试
+     * @return {@link Result }
+     */
     @GetMapping("/test")
     public Result test(){
         return Result.success("域名测试");
     }
 
+    /**增加浏览量
+     * @param postId
+     * @return {@link Result }
+     */
     @GetMapping("/addViewNums")
     public Result addViewNums(Integer postId){
 //        System.out.println(postId);
@@ -49,6 +56,10 @@ public class PostController {
         return Result.success(null);
     }
 
+    /**插入帖子
+     * @param post
+     * @return {@link Result }
+     */
     @PostMapping("/insert")
     public Result insertPost(@RequestBody Post post){
 //        System.out.println("收到请求");

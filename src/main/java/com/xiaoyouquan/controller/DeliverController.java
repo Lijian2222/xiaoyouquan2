@@ -23,18 +23,30 @@ public class DeliverController {
     @Resource
     private DeliverService deliverService;
 
+    /**查询我的投递
+     * @param deliver
+     * @return {@link Result }<{@link List }<{@link Deliver }>>
+     */
     @PostMapping("/query")
     public Result<List<Deliver>> queryDeliver(@RequestBody Deliver deliver){
         List<Deliver> delivers = deliverService.queryDeliver(deliver);
         return Result.success(delivers);
     }
 
+    /**插入我的投递
+     * @param deliver
+     * @return {@link Result }
+     */
     @PostMapping("/insert")
     public Result insertDeliver(@RequestBody Deliver deliver){
         deliverService.insertDeliver(deliver);
         return Result.success("操作成功");
     }
 
+    /**更新我的收藏
+     * @param deliver
+     * @return {@link Result }
+     */
     @PostMapping("/update")
     public Result updateFavorite(@RequestBody Deliver deliver){
         deliverService.updateDeliver(deliver);

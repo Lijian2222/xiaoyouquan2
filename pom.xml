@@ -72,6 +72,12 @@
             <artifactId>Happy-Captcha</artifactId>
             <version>1.0.1</version>
         </dependency>
+        <!--RedisUtil里面要用到-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

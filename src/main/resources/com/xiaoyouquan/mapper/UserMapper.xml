@@ -35,4 +35,33 @@
             )
     </insert>
 
+    <!--  suffixOverrides=","：去掉最后一个多余的逗号  -->
+    <update id="updateUser" parameterType="com.xiaoyouquan.pojo.User">
+        UPDATE user SET
+        <trim suffixOverrides=",">
+            <if test="nickname != null and nickname != ''">nickname = #{nickname},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="signature != null and signature != ''">signature = #{signature},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="campus1 != null and campus1 != ''">campus1 = #{campus1},</if>
+            <if test="campus2 != null and campus2 != ''">campus2 = #{campus2},</if>
+            <if test="campus3 != null and campus3 != ''">campus3 = #{campus3},</if>
+            <if test="campus4 != null and campus4 != ''">campus4 = #{campus4},</if>
+            <if test="campus5 != null and campus5 != ''">campus5 = #{campus5},</if>
+            <if test="campus6 != null and campus6 != ''">campus6 = #{campus6},</if>
+            <if test="academicDegree1 != null and academicDegree1 != ''">academic_degree1 = #{academicDegree1},</if>
+            <if test="academicDegree2 != null and academicDegree2 != ''">academic_degree2 = #{academicDegree2},</if>
+            <if test="academicDegree3 != null and academicDegree3 != ''">academic_degree3 = #{academicDegree3},</if>
+            <if test="academicDegree4 != null and academicDegree4 != ''">academic_degree4 = #{academicDegree4},</if>
+            <if test="academicDegree5 != null and academicDegree5 != ''">academic_degree5 = #{academicDegree5},</if>
+            <if test="academicDegree6 != null and academicDegree6 != ''">academic_degree6 = #{academicDegree6},</if>
+            <if test="profilePicture != null and profilePicture != ''">profile_picture = #{profilePicture},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="isDeleted != null ">is_deleted = #{isDeleted},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
 </mapper>
